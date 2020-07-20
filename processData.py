@@ -1,6 +1,6 @@
 import time
 import spacy
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,json
 
 app = Flask(__name__)
 
@@ -50,8 +50,13 @@ def predict():
         raw_text = request.form["comment"]
         sentiment = request.form["sentiment"]
         prediction = predict_entities(raw_text, sentiment)
-
-    return render_template('index.html', prediction=prediction)
+        response = app.response_class(
+            response=json.dumps(prediction),
+            status=200,
+            mimetype='application/json'
+        )
+    return response
+    #return render_template('index.html', prediction=prediction)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0",debug=True,port=80)
