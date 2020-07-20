@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" >
+</head>
+<body>
+
+	<header>
+		<div class="container">
+
+		<h2>Text extraction on basis of tweet Sentiments</h2>
+
+	</div>
+	</header>
+
+	<div class="ml-container">
+
+		<form action="{{ url_for('predict')}}" method="POST">
+		<p>Enter Your Comment Here</p>
+		<!-- <input type="text" name="comment"/> -->
+		<textarea name="comment" rows="4" cols="50"></textarea>
+
+        <label for="sentiment">Choose Sentiment:</label>
+        <select id="sentiment" name="sentiment">
+            <option value="positive">Positive</option>
+            <option value="negative">Negative</option>
+            <option value="neutral">Neutral</option>
+            </select>
+		<br/>
+
+		<input type="submit" class="btn-info" value="predict">
+
+
+	</form>
+
+        <h1>{{prediction}}</h1>
+	</div>
+
+
+
+
+</body>
+</html>
